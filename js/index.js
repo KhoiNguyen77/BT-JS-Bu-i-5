@@ -36,10 +36,17 @@ function tinhDiemThi(diem1, diem2, diem3, diemDau, diemKhuVuc, diemDoiTuong, idO
 document.getElementById('tinhTienDien').onclick = function () {
     tinhTienDien('soDien', 'hoTen', 'ket-qua-b2');
 }
+/**
+ * 
+ * @param {*} dienSuDung id của thẻ input chứa số điện ng dùng nhập vào
+ * @param {*} Ten id của thẻ input chứa tên do ng dùng nhập vào
+ * @param {*} outPutTienVaTen  id của thẻ chứa kết quả bài 2
+ * @returns 
+ */
 function tinhTienDien(dienSuDung, Ten, outPutTienVaTen) {
     var tien = 0;
     var hoTen = document.getElementById(Ten).value;
-    var Dien = document.getElementById(dienSuDung).value;
+    var Dien = document.getElementById(dienSuDung).value; //Lấy số điện từ thẻ có id là dienSuDung
     if (Dien <= 50 && Dien >= 0) {
         tien = Dien * 500;
     }
@@ -61,14 +68,23 @@ function tinhTienDien(dienSuDung, Ten, outPutTienVaTen) {
     return kQuaB2;
 }
 // Bài 3 
+
 document.getElementById('tinhTienThue').onclick = function () {
     tinhTienThue('tongThuNhap', 'soNguoiPhuThuoc', 'nhapHoTen', 'ket-qua-b3')
 }
+/**
+ * 
+ * @param {*} thuNhapThuc id của thẻ input chứa số thu nhập ng dùng nhập vào
+ * @param {*} soNgPhuThuoc id của thẻ input chứa số người phụ thuộc do ng dùng nhập vào
+ * @param {*} ten   id của thẻ input chứa tên do ng dùng nhập vào
+ * @param {*} idOutPutB3 id của thẻ chứa kết quả b3
+ * @returns 
+ */
 function tinhTienThue(thuNhapThuc, soNgPhuThuoc, ten, idOutPutB3) {
-    var thuNhap = document.getElementById(thuNhapThuc).value;
-    var hoVaTen = +document.getElementById(ten).value;
+    var thuNhap = document.getElementById(thuNhapThuc).value; //lấy thu nhập từ thẻ có id là thuNhapThuc
+    var hoVaTen = +document.getElementById(ten).value; //lấy họ và tên từ thẻ có id là ten
     var tienThue = 0;
-    var phuthuoc = +document.getElementById(soNgPhuThuoc).value;
+    var phuthuoc = +document.getElementById(soNgPhuThuoc).value; //lấy số ng phụ thuộc từ thẻ có id là soNgPhuThuoc
     thuNhapChiuThue = thuNhap - 4e+6 - phuthuoc * 1.6e+6;
     if (thuNhapChiuThue <= 60e+6 && thuNhapChiuThue >= 0) {
         tienThue = thuNhapChiuThue * 0.05;
@@ -101,9 +117,14 @@ document.getElementById('soKetNoi').style.display = 'none'
 document.getElementById('loaiKhachHang').onchange = function () {
     displayKetNoi('loaiKhachHang', 'soKetNoi');
 }
+/**
+ * 
+ * @param {*} loaiKhach id của thẻ select chứa loại hình khách hàng
+ * @param {*} ketNoi id của thẻ cần ẩn
+ */
 function displayKetNoi(loaiKhach, ketNoi) {
 
-    var loaiKH = document.getElementById(loaiKhach).value;
+    var loaiKH = document.getElementById(loaiKhach).value; //lấy loại hình khách hàng từ thẻ có id là loaiKhach
     if (loaiKH == 0) {
         document.getElementById(ketNoi).style.display = 'none';
     } else if (loaiKH == 1) {
@@ -115,11 +136,20 @@ function displayKetNoi(loaiKhach, ketNoi) {
 document.getElementById('tinhTienCap').onclick = function () {
     tinhTienCap('loaiKhachHang', 'maKhachHang', 'soKenh', 'soKetNoi', 'ket-qua-b4');
 }
+/**
+ * 
+ * @param {*} loaiKhach id của thẻ select chứa loại hình khách hàng
+ * @param {*} khachHang id của thẻ chứa mã khách hàng
+ * @param {*} Kenh id của thẻ input chứa số kênh cao cấp
+ * @param {*} ketNoi id của thẻ input chứa số kết nối
+ * @param {*} idOutPutB4 id của thẻ chứa kết quả b4
+ * @returns 
+ */
 function tinhTienCap(loaiKhach, khachHang, Kenh, ketNoi, idOutPutB4) {
-    var loaiKH = document.getElementById(loaiKhach).value;
-    var maKH = +document.getElementById(khachHang).value;
-    var kenhCaoCap = +document.getElementById(Kenh).value;
-    var soLuongKetNoi = +document.getElementById(ketNoi).value;
+    var loaiKH = document.getElementById(loaiKhach).value; //lấy loại hình KH từ thẻ có id là loaiKhach
+    var maKH = +document.getElementById(khachHang).value; // lấy mã khách hàng từ thẻ có id là khachHang
+    var kenhCaoCap = +document.getElementById(Kenh).value; // lấy số kênh cao cấp từ thẻ có id là Kenh;
+    var soLuongKetNoi = +document.getElementById(ketNoi).value; // lấy số lượng kết nối từ thẻ có id là ketNoi
     var tienCap = 0;
     if (loaiKH == 0) {
         alert('Hãy chọn loại hình khách hàng');
