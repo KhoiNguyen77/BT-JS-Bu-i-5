@@ -30,16 +30,17 @@
             </select>
         </div>
         <div class="wrapper form-group">
-            <input type="text" placeholder="Điểm môn thứ nhất" id="diemMon1">
-            <input type="text" placeholder="Điểm môn thứ hai" id="diemMon2">
-            <input type="text" placeholder="Điểm môn thứ ba" id="diemMon3">
+            <input type="text" placeholder="Điểm môn thứ nhất" id="diemMon1" class="p-2 me-2">
+            <input type="text" placeholder="Điểm môn thứ hai" id="diemMon2" class="p-2 me-2">
+            <input type="text" placeholder="Điểm môn thứ ba" id="diemMon3" class="p-2 me-2">
         </div>
-        <button class="btn btn-danger my-2 rounded-pill text-white px-3" id="tinhToan">Kết Quả</button>
-        <div class="form-control bg-danger text-white my-2 p-3" id="ket-qua-b1">
+        <button class="btn btn-success my-2 rounded-pill text-white px-3" id="tinhToan">Kết Quả</button>
+        <div class="form-control bg-success text-white my-2 p-3" id="ket-qua-b1">
 
         </div>
     </div>
     <hr>
+    <!-- Bài 2 -->
     <div class="container">
         <h1>Bài 2</h1>
         <div class="wrapper form-group">
@@ -52,6 +53,7 @@
         </div>
     </div>
     <hr>
+    <!-- Bài 3 -->
     <div class="container">
         <h1>Bài 3</h1>
         <div class="wrapper form-group">
@@ -63,6 +65,27 @@
         <button class="btn btn-danger my-2 rounded-pill text-white px-3" id="tinhTienThue">Tính tiền thuế</button>
         <div class="form-control bg-danger text-white my-2 p-3" id="ket-qua-b3">
 
+        </div>
+    </div>
+    <!-- Bài 4 -->
+    <div class="container">
+        <h1>Bài 4</h1>
+        <div class="wrapper form-group">
+            <select name="Loại Khách Hàng" id="loaiKhachHang" class="form-control my-2">
+                <option value="0">Chọn loại khách hàng</option>
+                <option value="1">Nhà Dân</option>
+                <option value="2">Doanh Nghiệp</option>
+            </select>
+            <section class="form-group">
+                <input type="text" placeholder="Nhập mã khách hàng" id="maKhachHang" class="me-3 p-2">
+                <input type="text" placeholder="Số kênh cao cấp" id="soKenh" class="me-3 p-2">
+                <input type="text" placeholder="Số kết nối" id="soKetNoi" class="me-3 p-2">
+            </section>
+
+            <button class="btn btn-danger my-2 rounded-pill text-white px-3" id="tinhTienCap">Tính tiền cáp</button>
+            <div class="form-control bg-danger text-white my-2 p-3" id="ket-qua-b4">
+
+            </div>
         </div>
     </div>
     <script src="./js/index.js"></script>

@@ -1,83 +1,74 @@
 // Bài 1
 document.getElementById('tinhToan').onclick = function () {
-    /*
-    Input:
-    Điểm môn 1, 2 ,3 điểm chuẩn, điểm khu vực, đối tượng ==> 
-    number
-    
-    Output: Kết quả trượt hay rớt ==> String
-    
-    */
-    var diemMon1 = +document.getElementById('diemMon1').value;
-    var diemMon2 = +document.getElementById('diemMon2').value;
-    var diemMon3 = +document.getElementById('diemMon3').value;
-    var diemChuan = +document.getElementById('diemChuan').value;
-    var diemKhuVuc = +document.getElementById('khuVuc').value;
-    var doiTuong = +document.getElementById('doiTuong').value;
-    var tongDiem = tinhDiemThi(diemMon1, diemMon2, diemMon3, diemChuan, diemKhuVuc, doiTuong)
-    if (tongDiem >= diemChuan && diemMon1 > 0 && diemMon2 > 0 && diemMon3 > 0) {
-        document.getElementById('ket-qua-b1').innerHTML = `Bạn đã trúng tuyển !. Tổng điểm là: ${tongDiem} `;
-    }
-    else if (diemMon1 === 0 || diemMon2 === 0 || diemMon3 === 0) {
-        document.getElementById('ket-qua-b1').innerHTML = `Bạn đã trượt do có môn bị điểm 0.  Tổng điểm là: ${tongDiem} `;
-    }
-    else if (tongDiem < diemChuan) {
-        document.getElementById('ket-qua-b1').innerHTML = `Bạn đã trượt do không đủ điểm.  Tổng điểm là: ${tongDiem} `;
-    }
+    tinhDiemThi('diemMon1', 'diemMon2', 'diemMon3', 'diemChuan', 'khuVuc', 'doiTuong', 'ket-qua-b1');
 }
-function tinhDiemThi(diemMon1, diemMon2, diemMon3, diemChuan, diemKhuVuc, doiTuong) {
-    var tongDiem = 0;
-    tongDiem = diemMon1 + diemMon2 + diemMon3 + diemKhuVuc + doiTuong;
-    return tongDiem;
+/**
+ * 
+ * @param {*} diem1:  là id của thẻ chứa điểm cần lấy 
+ * @param {*} diem2:  là id của thẻ chứa điểm cần lấy 
+ * @param {*} diem3:  là id của thẻ chứa điểm cần lấy 
+ * @param {*} diemDau: là id của thẻ chứa điểm chuẩn cần lấy 
+ * @param {*} diemKhuVuc là id của thẻ chứa điểm khu vực cần lấy
+ * @param {*} diemDoiTuong là id của thẻ chứa điểm đổi tượng cần lấy
+ * @param {*} idOutPut là id của thẻ sẽ chứa kết quả
+ * @returns 
+ */
+function tinhDiemThi(diem1, diem2, diem3, diemDau, diemKhuVuc, diemDoiTuong, idOutPut) {
+    var mon1 = +document.getElementById(diem1).value;
+    var mon2 = +document.getElementById(diem2).value;
+    var mon3 = +document.getElementById(diem3).value;
+    var dChuan = +document.getElementById(diemDau).value;
+    var dKhuVuc = +document.getElementById(diemKhuVuc).value;
+    var dDoiTuong = +document.getElementById(diemDoiTuong).value;
+    var tong = mon1 + mon2 + mon3 + dKhuVuc + dDoiTuong;
+    var kQua = '';
+    if (mon1 === 0 || mon2 === 0 || mon3 === 0) {
+        kQua = `Bạn đã trượt do có 1 môn bị điểm 0. Tổng điểm là ${tong}`;
+    } else if (tong < dChuan) {
+        kQua = `Bạn đã trượt do không đủ điểm `;
+    } if (tong >= dChuan) {
+        kQua = `Bạn đã trúng tuyển !!!. Tổng điểm là ${tong}`;
+    }
+    document.getElementById(idOutPut).innerHTML = kQua;
+    return kQua;
 }
 // Bài 2
 document.getElementById('tinhTienDien').onclick = function () {
-    var hoTen = document.getElementById('hoTen').value;
-    var soDien = document.getElementById('soDien').value;
-    var tienDien = tinhTienDien(soDien);
-    tienDien = new Intl.NumberFormat('vn-VN').format(tienDien);
-    document.getElementById('ket-qua-b2').innerHTML = `Họ và tên là: ${hoTen} ; Số tiền điện là:  ${tienDien}`;
+    tinhTienDien('soDien', 'hoTen', 'ket-qua-b2');
 }
-function tinhTienDien(soDien) {
-    /*
-    Input:
-    số kW => number
-    Họ và tên => String
-    Output:
-    Tiền điện và họ tên = > number và string
-    
-    
-    
-    */
-    var tienDien = 0;
-    if (soDien <= 50 && soDien >= 0) {
-        tienDien = soDien * 500;
+function tinhTienDien(dienSuDung, Ten, outPutTienVaTen) {
+    var tien = 0;
+    var hoTen = document.getElementById(Ten).value;
+    var Dien = document.getElementById(dienSuDung).value;
+    if (Dien <= 50 && Dien >= 0) {
+        tien = Dien * 500;
     }
-    else if (soDien > 50 && soDien <= 100) {
-        tienDien = 50 * 500 + (soDien - 50) * 650;
+    else if (Dien > 50 && Dien <= 100) {
+        tien = 50 * 500 + (Dien - 50) * 650;
     }
-    else if (soDien > 100 && soDien <= 200) {
-        tienDien = 50 * 500 + 50 * 650 + (soDien - 100) * 850;
+    else if (Dien > 100 && Dien <= 200) {
+        tien = 50 * 500 + 50 * 650 + (Dien - 100) * 850;
     }
-    else if (soDien > 200 && soDien <= 350) {
-        tienDien = 50 * (500 + 650) + 100 * 850 + (soDien - 200) * 1100;
+    else if (Dien > 200 && Dien <= 350) {
+        tien = 50 * (500 + 650) + 100 * 850 + (Dien - 200) * 1100;
     }
     else {
-        tienDien = 50 * (500 + 650) + 100 * 850 + 150 * 1100 + (soDien - 350) * 1300;
+        tien = 50 * (500 + 650) + 100 * 850 + 150 * 1100 + (Dien - 350) * 1300;
     }
-    return tienDien;
+    tienDien = new Intl.NumberFormat('vn-VN').format(tien);
+    document.getElementById(outPutTienVaTen).innerHTML = `Họ và tên là: ${hoTen} ; Số tiền điện là: ${tienDien} `;
+    var kQuaB2 = document.getElementById(outPutTienVaTen).innerHTML;
+    return kQuaB2;
 }
 // Bài 3 
 document.getElementById('tinhTienThue').onclick = function () {
-    var nhapHoTen = document.getElementById('nhapHoTen').value;
-    var tongThuNhap = +document.getElementById('tongThuNhap').value;
-    var soNguoiPhuThuoc = +document.getElementById('soNguoiPhuThuoc').value;
-    var tienThue = tinhTienThue(tongThuNhap, soNguoiPhuThuoc);
-    tienThue = new Intl.NumberFormat('vn-VN').format(tienThue);
-    document.getElementById('ket-qua-b3').innerHTML = `Họ và tên là : ${nhapHoTen} ; Số tiền thuế là ${tienThue} `
+    tinhTienThue('tongThuNhap', 'soNguoiPhuThuoc', 'nhapHoTen', 'ket-qua-b3')
 }
-function tinhTienThue(thuNhap, phuthuoc) {
+function tinhTienThue(thuNhapThuc, soNgPhuThuoc, ten, idOutPutB3) {
+    var thuNhap = document.getElementById(thuNhapThuc).value;
+    var hoVaTen = +document.getElementById(ten).value;
     var tienThue = 0;
+    var phuthuoc = +document.getElementById(soNgPhuThuoc).value;
     thuNhapChiuThue = thuNhap - 4e+6 - phuthuoc * 1.6e+6;
     if (thuNhapChiuThue <= 60e+6 && thuNhapChiuThue >= 0) {
         tienThue = thuNhapChiuThue * 0.05;
@@ -100,5 +91,46 @@ function tinhTienThue(thuNhap, phuthuoc) {
     else {
         tienThue = thuNhapChiuThue * 0.35;
     }
-    return tienThue;
+    tienThueFormat = new Intl.NumberFormat('vn-VN').format(tienThue);
+    document.getElementById(idOutPutB3).innerHTML = `Họ và tên là: ${hoVaTen} ; Số tiền thuế là: ${tienThueFormat}`;
+    var kQuaB3 = document.getElementById(idOutPutB3).innerHTML;
+    return kQuaB3;
+}
+// Bài 4:
+document.getElementById('soKetNoi').style.display = 'none'
+document.getElementById('loaiKhachHang').onchange = function () {
+    displayKetNoi('loaiKhachHang', 'soKetNoi');
+}
+function displayKetNoi(loaiKhach, ketNoi) {
+
+    var loaiKH = document.getElementById(loaiKhach).value;
+    if (loaiKH == 0) {
+        document.getElementById(ketNoi).style.display = 'none';
+    } else if (loaiKH == 1) {
+        document.getElementById(ketNoi).style.display = 'none';
+    } else if (loaiKH == 2) {
+        document.getElementById(ketNoi).style.display = 'inline-block'
+    }
+}
+document.getElementById('tinhTienCap').onclick = function () {
+    tinhTienCap('loaiKhachHang', 'maKhachHang', 'soKenh', 'soKetNoi', 'ket-qua-b4');
+}
+function tinhTienCap(loaiKhach, khachHang, Kenh, ketNoi, idOutPutB4) {
+    var loaiKH = document.getElementById(loaiKhach).value;
+    var maKH = +document.getElementById(khachHang).value;
+    var kenhCaoCap = +document.getElementById(Kenh).value;
+    var soLuongKetNoi = +document.getElementById(ketNoi).value;
+    var tienCap = 0;
+    if (loaiKH == 0) {
+        alert('Hãy chọn loại hình khách hàng');
+    } else if (loaiKH == 1) {
+        tienCap = 4.5 + 20.5 + 7.5 * kenhCaoCap;
+    } else if (loaiKH == 2 && soLuongKetNoi <= 10) {
+        tienCap = 15 + 75 + 50 * kenhCaoCap;
+    } else if (loaiKH == 2 && soLuongKetNoi > 10) {
+        tienCap = 15 + 75 + (soLuongKetNoi - 10) * 5 + 50 * kenhCaoCap;
+    }
+    document.getElementById(idOutPutB4).innerHTML = `Mã khách hàng là: ${maKH} ; Số tiền cáp là: $${tienCap}`
+    var kQuaB4 = document.getElementById(idOutPutB4).innerHTML;
+    return kQuaB4;
 }
