@@ -82,7 +82,7 @@ document.getElementById('tinhTienThue').onclick = function () {
  */
 function tinhTienThue(thuNhapThuc, soNgPhuThuoc, ten, idOutPutB3) {
     var thuNhap = document.getElementById(thuNhapThuc).value; //lấy thu nhập từ thẻ có id là thuNhapThuc
-    var hoVaTen = +document.getElementById(ten).value; //lấy họ và tên từ thẻ có id là ten
+    var hoVaTen = document.getElementById(ten).value; //lấy họ và tên từ thẻ có id là ten
     var tienThue = 0;
     var phuthuoc = +document.getElementById(soNgPhuThuoc).value; //lấy số ng phụ thuộc từ thẻ có id là soNgPhuThuoc
     thuNhapChiuThue = thuNhap - 4e+6 - phuthuoc * 1.6e+6;
